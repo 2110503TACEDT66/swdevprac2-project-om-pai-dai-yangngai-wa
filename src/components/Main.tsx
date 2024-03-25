@@ -15,7 +15,7 @@ export default function Main() {
                         ปลดล็อกศักยภาพของคุณ Coworking Space ที่ออกแบบมาเพื่อการทำงานอย่างมีประสิทธิภาพ
                     </h1>
                 </div>
-                <Link href={"/reserve"} className=" bg-main-100 text-white  text-center py-3 rounded-md font-semibold">
+                <Link href={"/coworkings"} className=" bg-main-100 text-white  text-center py-3 rounded-md font-semibold">
                     RESERVE
                 </Link>
 
