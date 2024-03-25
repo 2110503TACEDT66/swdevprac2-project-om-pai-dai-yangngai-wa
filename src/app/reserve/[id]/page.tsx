@@ -7,7 +7,6 @@ import getCoworking from "@/libs/getCoworking";
 
 export default async function Page({params} : {params : {id : string}}){
 
-    const coworkingDetail = await getCoworking(params.id)
 
     const [date, setDate] = useState<Dayjs|null>(null)
     const [time, setTime] = useState<string>("")
@@ -42,11 +41,19 @@ export default async function Page({params} : {params : {id : string}}){
 
     // const data : Coworking | undefined = mockData.find((coworking) => coworking.id === params.id)
 
+<<<<<<< HEAD
     const handlerSubmit = () => {
         if(coworkingDetail && coworkingDetail.name && date && time){
             console.log("Submit")
         }
     }
+=======
+    // const handlerSubmit = () => {
+    //     if(coworkingDetail && coworkingDetail.name && date && time){
+    //         console.log("Submit")
+    //     }
+    // }
+>>>>>>> 0868f6a3405207af7e0dfb48ae8dc6535c83cceb
 
     
 
@@ -75,7 +82,7 @@ export default async function Page({params} : {params : {id : string}}){
                         <input onChange={(e :React.ChangeEvent<HTMLInputElement>)=>setTime(e.target.value)} placeholder="04:30" className=" text-xl text-blck font-semibold placeholder:text-xl border-2 focus:outline-none px-5 border-gray-300 h-full rounded-md" type="text" />
                     </div>
                 </div>
-                <button onClick={handlerSubmit} className=" bg-main-100 text-white py-3 rounded-md font-semibold">
+                <button  className=" bg-main-100 text-white py-3 rounded-md font-semibold">
                     RESERVE
                 </button>
             </div>
