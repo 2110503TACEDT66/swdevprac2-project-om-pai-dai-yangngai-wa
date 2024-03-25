@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import UserRegister from "@/libs/UserRegister";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -31,7 +30,7 @@ const LoginPage = () => {
                     Password
                 </h1>
                 <input onChange={(e) => (setPass(e.target.value))}
-                placeholder="Password" className=" text-xl text-blck font-semibold placeholder:text-xl border-2 focus:outline-none py-2 px-5 border-gray-300 h-full rounded-md" type="text" />
+                placeholder="Password" className=" text-xl text-blck font-semibold placeholder:text-xl border-2 focus:outline-none py-2 px-5 border-gray-300 h-full rounded-md" type="password" />
             </div>
         </div>
         <div className=" flex flex-row w-full space-x-5">
