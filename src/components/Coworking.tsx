@@ -25,7 +25,7 @@ export default function Coworking( {coworking} : {coworking : Coworking}){
                         Open : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {coworking.opentime}
+                        {coworking.opentime} {}
                     </h1>
                     <h1 className=" font-bold text-xl">
                         Close : 
@@ -43,7 +43,7 @@ export default function Coworking( {coworking} : {coworking : Coworking}){
                     </h1>
                 </div>
             </div>
-            <Link href={`/reserve/${coworking.id}`} className=" bg-main-100 my-5 w-2/12 text-white flex justify-center items-center font-bold rounded-md">
+            <Link href={`/coworkings/${coworking.id}`} className=" bg-main-100 my-5 w-2/12 text-white flex justify-center items-center font-bold rounded-md">
                 SELECT
             </Link>
         </div>

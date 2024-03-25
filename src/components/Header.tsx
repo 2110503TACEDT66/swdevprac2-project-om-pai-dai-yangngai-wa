@@ -12,7 +12,7 @@ export default async function Header() {
         <nav>
             <div className="flex space-x-7 justify-center items-center">
                 <Link href="/" className=" text-xl font-bold">HOME</Link>
-                <Link href="/reserve" className=" text-xl font-bold">RESERVE</Link>
+                <Link href="/coworkings" className=" text-xl font-bold">RESERVE</Link>
                 {
                     !session ? 
                         (
