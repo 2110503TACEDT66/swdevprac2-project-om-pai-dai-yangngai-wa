@@ -1,12 +1,14 @@
 "use client";
-
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { redirect } from 'next/navigation'
 import React, { useState } from "react";
 
 const LoginPage = () => {
+  
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-
+  const { data:session } = useSession();
+  if(!session){
   const onSubmit = async () => {
     const result = await signIn("credentials", {
       email: email,
@@ -46,6 +48,9 @@ const LoginPage = () => {
       </div>
     </main>
   );
+}else {
+  redirect('/')
+}
 };
 
 export default LoginPage;

@@ -1,8 +1,10 @@
+import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation'
-
-const Page = () => {
-
-    const onSubmit = async (registerData : FormData) => {
+import { authOptions } from '../[...nextauth]/route';
+const Page = async () => {
+    const session = await getServerSession(authOptions)
+    if(!session){
+        const onSubmit = async (registerData : FormData) => {
         "use server"
         const email =  registerData.get('email');
         const pass = registerData.get('password');
@@ -28,7 +30,6 @@ const Page = () => {
             redirect('/')
         }
     };
-
 
   return (
     <main className="flex w-screen flex-col  items-center bg-main-100 min-h-[90vh] p-7">
@@ -77,6 +78,9 @@ const Page = () => {
       </form>
     </main>
   );
+}else{
+    redirect('/')
+}
 };
 
 export default Page;

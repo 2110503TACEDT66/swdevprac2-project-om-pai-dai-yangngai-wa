@@ -27,13 +27,13 @@ export default function Reservation( {reservation} : {reservation : Reservation}
                         Date : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {reservation.appDate.split(" ")[1]}
+                        {reservation.apptDate.split(" ")[1]}
                     </h1>
                     <h1 className=" font-bold text-xl">
                         Time : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {reservation.appDate.split(" ")[0]}
+                        {reservation.apptDate.split(" ")[0]}
                     </h1>
                 
                 </div>

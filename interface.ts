@@ -29,7 +29,7 @@ interface User {
 }
 
 interface Reservation {
-    appDate : string,
+    apptDate : string,
     user : string,
     coWorking : string,
     createAt : string,
