@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Main() {
     return(
@@ -14,9 +15,9 @@ export default function Main() {
                         ปลดล็อกศักยภาพของคุณ Coworking Space ที่ออกแบบมาเพื่อการทำงานอย่างมีประสิทธิภาพ
                     </h1>
                 </div>
-                <button className=" bg-main-100 text-white py-3 rounded-md font-semibold">
+                <Link href={"/reserve"} className=" bg-main-100 text-white  text-center py-3 rounded-md font-semibold">
                     RESERVE
-                </button>
+                </Link>
 
             </div>
             <div className=" w-4/6 h-full">

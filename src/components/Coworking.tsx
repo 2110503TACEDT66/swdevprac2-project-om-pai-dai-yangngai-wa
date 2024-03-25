@@ -1,4 +1,8 @@
-export default function Coworking(){
+import Link from "next/link";
+
+
+
+export default function Coworking( {coworking} : {coworking : Coworking}){
     return(
         <div className=" flex flex-row justify-between bg-gray-200 rounded-md px-3 py-3">
             <div className=" flex flex-col space-y-3">
@@ -7,7 +11,7 @@ export default function Coworking(){
                         Name : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        C asean Samyan CO-OP
+                        {coworking.name}
                     </h1>
                 </div>
                 <div className=" flex flex-row  items-center space-x-3">
@@ -15,19 +19,19 @@ export default function Coworking(){
                         Tel : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        02 219 6999
+                        {coworking.tel}
                     </h1>
                     <h1 className=" font-bold text-xl">
                         Open : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        6.00 AM
+                        {coworking.opentime}
                     </h1>
                     <h1 className=" font-bold text-xl">
                         Close : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        4.30 AM
+                        {coworking.closetime}
                     </h1>
                 </div>
                 <div className=" flex flex-row  items-center space-x-3">
@@ -35,13 +39,13 @@ export default function Coworking(){
                         Address : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        1583 Rama IV Rd, Wang Mai, Pathum Wan, Bangkok 10330
+                        {coworking.address} {coworking.district} {coworking.province} {coworking.postalcode}
                     </h1>
                 </div>
             </div>
-            <button className=" bg-main-100 my-5 w-2/12 text-white font-bold rounded-md">
+            <Link href={`/reserve/${coworking.id}`} className=" bg-main-100 my-5 w-2/12 text-white flex justify-center items-center font-bold rounded-md">
                 SELECT
-            </button>
+            </Link>
         </div>
     )
 }

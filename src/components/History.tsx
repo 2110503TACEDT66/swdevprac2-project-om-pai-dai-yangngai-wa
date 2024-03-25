@@ -1,36 +1,33 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass, faArrowUpWideShort , faArrowDownWideShort } from "@fortawesome/free-solid-svg-icons"
-import Coworking from "./Coworking"
+import Reservation from "./Reservation"
 
-export default function Reserve() {
 
-    const mockData : Coworking[] = [
+export default function History() {
+
+    const mockData : Reservation[] = [
         {
-            id : "1",
-            name : "Coworking Space 1",
-            address : "1234/5",
-            district : "Bangrak",
-            province : "Bangkok",
-            postalcode : "10500",
-            tel : "02 123 4567",
-            price_hourly : 100,
-            opentime : "09:00",
-            closetime : "18:00"
+            appDate : "14:30 22/03/2567",
+            user : "John Doe",
+            coWorking : "Coworking Space 1",
+            createAt : "2022-01-01",
         },
         {
-            id : "2",
-            name : "C asean Samyan CO-OP",
-            address : "1583 Rama IV Rd, Wang Mai",
-            district : "Pathum Wan",
-            province : "Bangkok",
-            postalcode : "10330",
-            tel : "02 219 6999",
-            price_hourly : 100,
-            opentime : "06:00",
-            closetime : "4:30"
+            appDate : "06:30 24/03/2567",
+            user : "John Doe",
+            coWorking : "C asean Samyan CO-OP",
+            createAt : "2024-01-01",
         },
-
+        {
+            appDate : "06:30 24/03/2567",
+            user : "John Doe",
+            coWorking : "C asean Samyan CO-OP",
+            createAt : "2024-01-01",
+        },
+        
     ]
+
+
 
     return (
         <div className=" w-full min-h-[82vh] bg-white rounded-md">
@@ -54,9 +51,9 @@ export default function Reserve() {
             </div>
             <div className=" flex flex-col space-y-5 p-5">
                 {
-                    mockData.map((coworking) => {
+                    mockData.map((reservation) => {
                         return (
-                            <Coworking key={coworking.name} coworking={coworking} />
+                            <Reservation key={reservation.coWorking} reservation={reservation} />
                         )
                     }
                     )
