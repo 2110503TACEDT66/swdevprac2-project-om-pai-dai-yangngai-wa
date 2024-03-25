@@ -17,7 +17,7 @@ export default async function Header() {
                     !session ? 
                         (
                         <div className="flex space-x-7 justify-center items-center">
-                            <Link href="/reserve" className=" text-xl font-bold">RESERVE</Link>
+                            <Link href="/api/auth/register" className=" text-xl font-bold">REGISTER</Link>
                             <Link href="/api/auth/signin" className=" text-xl font-bold text-white p-2 bg-main-100 rounded-md">LOGIN</Link>
                         </div>
                         )
