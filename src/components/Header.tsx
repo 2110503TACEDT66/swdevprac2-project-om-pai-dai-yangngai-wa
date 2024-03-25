@@ -33,7 +33,6 @@ export default async function Header() {
                                 <Link href="/api/auth/signout" className=" text-xl font-bold text-white p-2 bg-main-100 rounded-md">LOGOUT</Link>
                             </div>
                         )
-                        
                 }
             </div>
         </nav>
