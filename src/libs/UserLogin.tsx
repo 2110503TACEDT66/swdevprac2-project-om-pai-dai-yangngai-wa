@@ -1,5 +1,3 @@
-
-
 export default async function UserLogIn(userEmail : string, userPassword : string) {
     const response = await fetch('https://coworking-space-git-main-swpractice2.vercel.app/api/v1/auth/login', {
         method: 'POST',

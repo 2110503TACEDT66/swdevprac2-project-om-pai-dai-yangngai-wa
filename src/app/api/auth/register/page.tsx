@@ -2,13 +2,11 @@
 
 import React, { useState } from "react";
 
-const LoginPage = async () => {
+const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
   const [telephone, setTelephone] = useState("");
-
-  
 
   return (
     <main className="flex w-screen flex-col  items-center bg-main-100 min-h-[90vh] p-7">
