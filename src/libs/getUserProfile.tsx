@@ -16,5 +16,4 @@ export default async function getUserProfile(){
         }
         return await response.json()
     }
-
 }
