@@ -29,7 +29,6 @@ const Page = () => {
         }
     };
 
-  
 
   return (
     <main className="flex w-screen flex-col  items-center bg-main-100 min-h-[90vh] p-7">

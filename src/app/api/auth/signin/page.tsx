@@ -37,7 +37,7 @@ const LoginPage = () => {
                     Password
                 </h1>
                 <input onChange={(e) => (setPass(e.target.value))}
-                placeholder="Password" className=" text-xl text-blck font-semibold placeholder:text-xl border-2 focus:outline-none py-2 px-5 border-gray-300 h-full rounded-md" type="text" />
+                placeholder="Password" className=" text-xl text-blck font-semibold placeholder:text-xl border-2 focus:outline-none py-2 px-5 border-gray-300 h-full rounded-md" type="password" />
             </div>
         </div>
         <button onClick={onSubmit} className=" bg-main-100 text-white  text-center py-3 rounded-md font-semibold">
