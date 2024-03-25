@@ -10,6 +10,7 @@ export default async function Page({params} : {params : {id : string}}){
     const coworkingDetail = await getCoworking(params.id)
 
     const [date, setDate] = useState<Dayjs|null>(null)
+
     const [time, setTime] = useState<string>("")
 
     // const mockData : Coworking[] = [

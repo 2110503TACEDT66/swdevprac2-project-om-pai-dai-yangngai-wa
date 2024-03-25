@@ -35,3 +35,9 @@ interface Reservation {
     createAt : string,
 
 }
+
+interface ReservationJson {
+    success: boolean,
+    count: number,
+    data: Reservation[]
+}

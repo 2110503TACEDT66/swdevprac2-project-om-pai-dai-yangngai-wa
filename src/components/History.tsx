@@ -1,33 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass, faArrowUpWideShort , faArrowDownWideShort } from "@fortawesome/free-solid-svg-icons"
 import Reservation from "./Reservation"
+import getReservations from "@/libs/getReservations"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
 
-export default function History() {
-
-    const mockData : Reservation[] = [
-        {
-            appDate : "14:30 22/03/2567",
-            user : "John Doe",
-            coWorking : "Coworking Space 1",
-            createAt : "2022-01-01",
-        },
-        {
-            appDate : "06:30 24/03/2567",
-            user : "John Doe",
-            coWorking : "C asean Samyan CO-OP",
-            createAt : "2024-01-01",
-        },
-        {
-            appDate : "06:30 24/03/2567",
-            user : "John Doe",
-            coWorking : "C asean Samyan CO-OP",
-            createAt : "2024-01-01",
-        },
-        
-    ]
-
-
+export default async function History() {
+    const reservationDetail:ReservationJson = await getReservations()
 
     return (
         <div className=" w-full min-h-[82vh] bg-white rounded-md">
@@ -51,7 +31,7 @@ export default function History() {
             </div>
             <div className=" flex flex-col space-y-5 p-5">
                 {
-                    mockData.map((reservation) => {
+                    reservationDetail.data.map((reservation:Reservation) => {
                         return (
                             <Reservation key={reservation.coWorking} reservation={reservation} />
                         )
