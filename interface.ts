@@ -31,13 +31,8 @@ interface User {
 interface Reservation {
     apptDate : string,
     user : string,
-    coWorking : string,
+    coWorking : Coworking,
     createAt : string,
+    _id : string
 
-}
-
-interface ReservationJson {
-    success: boolean,
-    count: number,
-    data: Reservation[]
 }
