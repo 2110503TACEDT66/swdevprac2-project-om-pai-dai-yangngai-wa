@@ -3,8 +3,11 @@
 import DateReserve from "@/components/DateReseve"
 import { Dayjs } from "dayjs";
 import { useState } from "react";
+import getCoworking from "@/libs/getCoworking"; 
 
-export default function Page({params} : {params : {id : string}}){
+export default async function Page({params} : {params : {id : string}}){
+
+    const coworkingDetail = await getCoworking(params.id)
 
     const [date, setDate] = useState<Dayjs|null>(null)
     const [time, setTime] = useState<string>("")

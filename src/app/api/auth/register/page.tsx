@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import UserRegister from "@/libs/UserRegister";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -49,7 +50,7 @@ const LoginPage = () => {
                 placeholder="02 000 2254" className=" text-xl text-blck font-semibold placeholder:text-xl border-2 focus:outline-none py-2 px-5 border-gray-300 h-full rounded-md" type="text" />
             </div>
         </div>
-        <button  className=" bg-main-100 text-white  text-center py-3 rounded-md font-semibold">
+        <button  className=" bg-main-100 text-white  text-center py-3 rounded-md font-semibold" >
             REGISTER
         </button>
       </div>

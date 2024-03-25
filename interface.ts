@@ -12,6 +12,13 @@ interface Coworking {
 
 }
 
+interface CoworkingJson {
+    success: boolean,
+    count: number,
+    pagination: Object,
+    data: Coworking[]
+}
+
 interface User {
     name: string,
     email : string,
