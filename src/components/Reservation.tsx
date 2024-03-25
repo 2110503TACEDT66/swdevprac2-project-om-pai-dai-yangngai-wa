@@ -14,7 +14,7 @@ export default function Reservation( {reservation} : {reservation : Reservation}
                         {reservation.coWorking.name}
                     </h1>
                 </div>
-                <div className=" flex flex-row  items-center space-x-3">
+                <div className=" flex flex-row  items-center space-x-6">
                     <h1 className=" font-bold text-xl">
                         User : 
                     </h1>
@@ -22,24 +22,24 @@ export default function Reservation( {reservation} : {reservation : Reservation}
                         {reservation.user}
                     </h1>
                 </div>
-                <div className=" flex flex-row  items-center space-x-3">
+                <div className=" flex flex-row  items-center space-x-6">
                     <h1 className=" font-bold text-xl">
                         Date : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {reservation.apptDate}
+                        {reservation.apptDate.substring(0,10)}
                     </h1>
                     <h1 className=" font-bold text-xl">
                         Time : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {reservation.apptDate}
+                        {reservation.apptDate.substring(11,19)}
                     </h1>
                 
                 </div>
             </div>
             <div className=" flex flex-col w-2/12 h-full space-y-5 justify-center">
-                <Link href={'/reserve'} className=" h-20 bg-amber-500 flex justify-center items-center text-white font-semibold rounded-md">
+                <Link href={`/coworkings/${reservation.coWorking.id}`} className=" h-20 bg-amber-500 flex justify-center items-center text-white font-semibold rounded-md">
                     Edit
                 </Link>
                 <Link href={"/"} className=" h-20 bg-red-600 flex justify-center items-center  text-white font-semibold rounded-md">
