@@ -11,7 +11,7 @@ export default function Reservation( {reservation} : {reservation : Reservation}
                         Name : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {reservation.coWorking.name}
+                        {reservation.coWorking}
                     </h1>
                 </div>
                 <div className=" flex flex-row  items-center space-x-3">
@@ -28,6 +28,7 @@ export default function Reservation( {reservation} : {reservation : Reservation}
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
                         {reservation.apptDate}
+
                     </h1>
                     <h1 className=" font-bold text-xl">
                         Time : 
