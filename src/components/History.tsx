@@ -5,9 +5,8 @@ import getReservations from "@/libs/getReservations"
 import HistoryCatalog from "./HistoryCatalog"
 
 export default async function History() {
-    const reservationDetail = await getReservations()
+    const reservationDetail:ReservationJson = await getReservations()
 
-    console.log(reservationDetail)
     return (
         <div className=" w-full min-h-[82vh] bg-white rounded-md">
             <div className=" p-5 w-full flex flex-row space-x-5">
@@ -33,7 +32,7 @@ export default async function History() {
                 {
                     reservationDetail.data.map((reservation:Reservation) => {
                         return (
-                            <Reservation key={reservation._id} reservation={reservation} />
+                            <Reservation key={reservation.coWorking} reservation={reservation} />
                         )
                     }
                     )

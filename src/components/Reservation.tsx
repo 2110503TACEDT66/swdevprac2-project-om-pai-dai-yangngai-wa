@@ -11,7 +11,7 @@ export default function Reservation( {reservation} : {reservation : Reservation}
                         Name : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {reservation.coWorking.name}
+                        {reservation.coWorking}
                     </h1>
                 </div>
                 <div className=" flex flex-row  items-center space-x-3">
@@ -27,21 +27,13 @@ export default function Reservation( {reservation} : {reservation : Reservation}
                         Date : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-<<<<<<< HEAD
                         {reservation.apptDate.split(" ")[1]}
-=======
-                        {reservation.apptDate}
->>>>>>> fd0878a1b510bea69206589bfa09a76dfaf57c1e
                     </h1>
                     <h1 className=" font-bold text-xl">
                         Time : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-<<<<<<< HEAD
                         {reservation.apptDate.split(" ")[0]}
-=======
-                        {reservation.apptDate}
->>>>>>> fd0878a1b510bea69206589bfa09a76dfaf57c1e
                     </h1>
                 
                 </div>
