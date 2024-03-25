@@ -2,9 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass, faArrowUpWideShort , faArrowDownWideShort } from "@fortawesome/free-solid-svg-icons"
 import Reservation from "./Reservation"
 import getReservations from "@/libs/getReservations"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
-
+import HistoryCatalog from "./HistoryCatalog"
 
 export default async function History() {
     const reservationDetail:ReservationJson = await getReservations()
@@ -29,7 +27,8 @@ export default async function History() {
                     <FontAwesomeIcon icon={faArrowDownWideShort} className=" w-7 text-white" />
                 </button>
             </div>
-            <div className=" flex flex-col space-y-5 p-5">
+            <HistoryCatalog reservationJson={reservationDetail}/>
+            {/* <div className=" flex flex-col space-y-5 p-5">
                 {
                     reservationDetail.data.map((reservation:Reservation) => {
                         return (
@@ -38,7 +37,7 @@ export default async function History() {
                     }
                     )
                 }
-            </div>
+            </div> */}
         </div>
     )
 }

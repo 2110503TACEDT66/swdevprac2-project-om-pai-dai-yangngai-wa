@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth"
 export default async function getReservations(){
 
     const session = await getServerSession(authOptions);
-        const response = await fetch('https://coworking-space-git-main-swpractice2.vercel.app/api/v1/appointments', {
+        const response = await fetch(`${process.env.BACKEND_URL}/appointments`, {
             method: "GET",
             headers: {
                 authorization:`Bearer ${session?.user?.token}`
