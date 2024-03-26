@@ -25,7 +25,7 @@ export default function Coworking( {coworking} : {coworking : Coworking}){
                         Open : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {coworking.opentime} {}
+                        {coworking.opentime}
                     </h1>
                     <h1 className=" font-bold text-xl">
                         Close : 

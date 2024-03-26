@@ -6,7 +6,7 @@ export default async function getReservations(){
 
     const session = await getServerSession(authOptions);
     if(session){
-        const response = await fetch(`${process.env.BACKEND_URL}/appointments`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/appointments`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
