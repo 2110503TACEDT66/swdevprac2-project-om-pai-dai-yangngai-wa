@@ -39,7 +39,7 @@ export default function Reservation( {reservation} : {reservation : Reservation}
                 </div>
             </div>
             <div className=" flex flex-col w-2/12 h-full space-y-5 justify-center">
-                <Link href={`/coworkings/${reservation.coWorking.id}`} className=" h-20 bg-amber-500 flex justify-center items-center text-white font-semibold rounded-md">
+                <Link href={`/coworkings/${reservation.coWorking.id}/edit?id=${reservation._id}`} className=" h-20 bg-amber-500 flex justify-center items-center text-white font-semibold rounded-md">
                     Edit
                 </Link>
                 <Link href={"/"} className=" h-20 bg-red-600 flex justify-center items-center  text-white font-semibold rounded-md">
