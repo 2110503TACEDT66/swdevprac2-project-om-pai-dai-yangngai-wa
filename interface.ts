@@ -9,9 +9,7 @@ interface Coworking {
     price_hourly : number,
     opentime : string,
     closetime : string,
-
 }
-
 interface CoworkingJson {
     success: boolean,
     count: number,
@@ -25,14 +23,14 @@ interface User {
     password: string,
     telephone_number: string,
     role: string,
+    _id: string,
 
 }
 
 interface Reservation {
     apptDate : string,
-    user : string,
+    user : User,
     coWorking : Coworking,
     createAt : string,
     _id : string
-
 }
