@@ -1,7 +1,7 @@
-import Coworking from "./Coworking"
+import Reservation from './Reservation';
 import CircularProgress from '@mui/material/CircularProgress';
 
-export default function CoworkingCatalog({coworking, isLoading}: {coworking: any , isLoading: boolean}) {
+export default function CoworkingCatalog({reservation, isLoading}: {reservation: any , isLoading: boolean}) {
     return (
         <>
         {
@@ -13,21 +13,21 @@ export default function CoworkingCatalog({coworking, isLoading}: {coworking: any
             )
             :
             (
-                coworking.length !== 0 ?
+                reservation.length !== 0 ?
                 (
                     <div className=" flex flex-col space-y-5 p-5">
                         {
-                            coworking.map((coworkingItem:Coworking) => (
-                                <Coworking key={coworkingItem.name} coworking={coworkingItem} />
+                            reservation.map((reservationIem:Reservation) => (
+                                <Reservation key={reservation.name} reservation={reservationIem} />
                             ))
                         }
                     </div>
                 )
                 :
                 (
-                    <div className=" flex justify-center items-center h-full py-40">
+                    <div className=" flex justify-center items-center h-full py-20">
                         <h1 className=" text-3xl font-bold">
-                            No Coworking Found
+                            No History Found
                         </h1>
                     </div>
                 )

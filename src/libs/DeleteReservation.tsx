@@ -1,6 +1,5 @@
 export default async function DeleteReservation(token:string,appId:string ){
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/appointments/${appId}`
-    console.log("url: ",url)
     const response = await fetch(url,{
         method: 'DELETE',
         headers: {
@@ -15,7 +14,5 @@ export default async function DeleteReservation(token:string,appId:string ){
         throw new Error("Failed to add appt")
     }
     const body = await response.json()
-    console.log("delete appt : " , body)
-    
     return body
 }

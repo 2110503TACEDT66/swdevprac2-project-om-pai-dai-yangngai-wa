@@ -14,10 +14,6 @@ export default async function addAppt(apptDate:string,user:string,cid:string,tok
             user : user
         }),
     });
-    // if(!response.ok) {
-    //     throw new Error("Failed to add appt")
-    // }
     const body = await response.json()
-    console.log("add appt : " , body)
     return body
 }

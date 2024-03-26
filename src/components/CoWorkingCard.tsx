@@ -5,30 +5,31 @@ import { Dayjs } from "dayjs";
 import { useState } from "react";
 import addAppt from "@/libs/addAppt";
 import { useSession } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
-import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
-import getUserProfile from "@/libs/getUserProfile";
 
 export default function CoWorkingCard({ coworking }: { coworking: Coworking }) {
     
 
 
     const session = useSession()
+    const router = useRouter();
     const currentUser = session.data?.user
-    console.log("here")
-    console.log(session)
     // console.log(userId)
 
     const [datetime, setDate] = useState<Dayjs|null>(null)
+    const [time, setTime] = useState<string>("")
     
     const onsubmit = () => {
-        // alert(datetime)
-        // console.log(datetime);
-        console.log("onSubmit1")
-        if(datetime && currentUser){
-            console.log("onSubmit2")
-            addAppt(datetime.toISOString(),currentUser._id, coworking.id,currentUser.token)
+
+        if(datetime && currentUser && time ){
+            const year = new Date(datetime.toISOString()).getFullYear()
+            const month = new Date(datetime.toISOString()).getMonth()
+            const day = new Date(datetime.toISOString()).getDate()
+            const hour = parseInt(time.split(":")[0])
+            const minute = parseInt(time.split(":")[1]) 
+            const newDate = new Date(year,month,day,hour,minute)
+            addAppt(newDate.toISOString(),currentUser._id, coworking.id,currentUser.token)
+            router.push("/history")
 
         }
     }
@@ -49,6 +50,13 @@ export default function CoWorkingCard({ coworking }: { coworking: Coworking }) {
                         </h1>
                         <DateReserve onChangeDate={(value : Dayjs)=>setDate(value)} />
                     </div>
+                    <div className=" flex flex-col space-y-3 w-1/2">
+                        <h1 className=" font-bold text-xl">
+                            Time
+                        </h1>
+                        <input onChange={(e )=>setTime(e.target.value)} placeholder="04:30" className=" text-xl text-blck font-semibold placeholder:text-xl border-2 focus:outline-none px-5 border-gray-300 h-full rounded-md" type="text" />
+                    </div>
+
                 </div>
                 <button className= "bg-main-100 text-white py-3 rounded-md font-semibold"
                 onClick={onsubmit}>
