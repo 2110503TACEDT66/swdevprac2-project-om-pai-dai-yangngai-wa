@@ -1,13 +1,13 @@
 import Reservation from "./Reservation"
 
-export default function HistoryCatalog({reservationJson}:{reservationJson:ReservationJson}){
+export default function HistoryCatalog({reservationJson}:{reservationJson:any}){
 
     return (
         <div className=" flex flex-col space-y-5 p-5">
             {
                 reservationJson.data.map((reservation:Reservation) => {
                     return (
-                        <Reservation key={reservation.coWorking} reservation={reservation} />
+                        <Reservation key={reservation.coWorking.id} reservation={reservation} />
                     )
                 }
                 )

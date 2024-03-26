@@ -1,4 +1,5 @@
-import CoWorkingEdit from "@/components/CoworkingEdit";
+import CoWorkingEdit from "@/components/CoworkingEdit"
+
 import getCoworking from "@/libs/getCoworking"; 
 
 export default async function EditPage({params} : {params : {id : string}}){
