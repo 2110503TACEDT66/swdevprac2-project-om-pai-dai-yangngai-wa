@@ -1,4 +1,5 @@
 export default async function UpdateReservation(apptDate:string,token:string,appId:string ){
+    await new Promise((resolve)=>setTimeout(resolve, 1000))
     console.log("updateappt Here")
     console.log("token :", token)
     const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/appointments/${appId}`

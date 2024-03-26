@@ -1,10 +1,25 @@
 'use client'
-import deleteOneAppt from "@/libs/deleteOneAppt";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import DeleteReservation from "@/libs/DeleteReservation";
 
 
 
 export default function Reservation( {reservation} : {reservation : Reservation}){
+    const session = useSession()
+    const currentUser = session.data?.user
+    // console.log(userId)
+    const rid = reservation._id
+    
+    const onsubmit = () => {
+        console.log("onsubmit1")
+        if(currentUser && rid){
+            console.log('onsubmit2')
+            DeleteReservation(currentUser.token, rid)
+            location.reload()
+        }
+    }
     return(
         <div className=" flex flex-row justify-between h-full bg-gray-200 rounded-md px-3 py-3">
             <div className=" flex flex-col space-y-3 h-full">
@@ -44,9 +59,9 @@ export default function Reservation( {reservation} : {reservation : Reservation}
                 <Link href={`/coworkings/${reservation.coWorking.id}/edit?id=${reservation._id}`} className=" h-20 bg-amber-500 flex justify-center items-center text-white font-semibold rounded-md">
                     Edit
                 </Link>
-                <Link href={'/history'} onClick={()=>deleteOneAppt(reservation._id)} className=" h-20 bg-red-600 flex justify-center items-center  text-white font-semibold rounded-md">
+                <button onClick={onsubmit} className=" h-20 bg-red-600 text-white font-semibold rounded-md">
                     Delete
-                </Link>
+                </button>
             </div>
             
             

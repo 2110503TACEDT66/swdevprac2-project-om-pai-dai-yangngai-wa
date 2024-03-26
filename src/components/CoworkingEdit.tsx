@@ -5,12 +5,11 @@ import { Dayjs } from "dayjs";
 import { useState } from "react";
 import addAppt from "@/libs/addAppt";
 import { useSession } from "next-auth/react";
-import { useParams, useSearchParams } from "next/navigation";
+import { redirect, useParams, useSearchParams } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import getUserProfile from "@/libs/getUserProfile";
 import UpdateReservation from "@/libs/UpdateReservation";
-
 
 export default function CoworkingEdit({ coworking}: { coworking: Coworking}) {
     
@@ -26,6 +25,7 @@ export default function CoworkingEdit({ coworking}: { coworking: Coworking}) {
 
     const urlParams = useSearchParams()
     const aid = urlParams.get('id')
+    const router = useRouter();
     
     const onsubmit = () => {
         // alert(datetime)
@@ -34,7 +34,6 @@ export default function CoworkingEdit({ coworking}: { coworking: Coworking}) {
         if(datetime && currentUser && aid){
             console.log("onSubmit2")
             UpdateReservation(datetime.toISOString(), currentUser.token, aid)
-
         }
     }
     return (
@@ -56,7 +55,7 @@ export default function CoworkingEdit({ coworking}: { coworking: Coworking}) {
                     </div>
                 </div>
                 <button className= "bg-main-100 text-white py-3 rounded-md font-semibold"
-                onClick={onsubmit}>
+                onClick={()=>{onsubmit(); router.push('/history');}}>
                     RESERVE
                 </button>
             </div>
