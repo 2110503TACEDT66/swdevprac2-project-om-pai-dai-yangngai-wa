@@ -23,7 +23,7 @@ export default function History() {
           setData(data.data)
 
         })
-      },)
+      },[data])
     return (
 
         <div className=" w-full min-h-[82vh] bg-white rounded-md">
