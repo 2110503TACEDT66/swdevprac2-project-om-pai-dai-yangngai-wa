@@ -27,12 +27,16 @@ export default function CoworkingEdit({ coworking}: { coworking: Coworking}) {
             const year = new Date(datetime.toISOString()).getFullYear()
             const month = new Date(datetime.toISOString()).getMonth()
             const day = new Date(datetime.toISOString()).getDate()
-            const hour = parseInt(time.split(":")[0])
-            const minute = parseInt(time.split(":")[1]) 
-            const newDate = new Date(year,month,day,hour,minute)
-            UpdateReservation(newDate.toISOString(), currentUser.token, aid)
-            
-            router.push("/history")
+            if(time.match(/^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/) && time.length === 5){
+                const hour = parseInt(time.split(":")[0])
+                const minute = parseInt(time.split(":")[1]) 
+                const newDate = new Date(year,month,day,hour,minute)
+                UpdateReservation(newDate.toISOString(), currentUser.token, aid)
+                router.push("/history")
+            }
+            else{
+                alert("Invalid time format")
+            }
         }
     }
     return (

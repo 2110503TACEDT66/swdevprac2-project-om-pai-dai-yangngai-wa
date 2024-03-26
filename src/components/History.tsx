@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react"
 
 export default function History() {
     const { data: session, status } = useSession()
-    const [data,setData] = useState<Coworking[]>()
+    const [data,setData] = useState<Reservation[]>()
     const [isLoading, setLoading] = useState(true)
 
     useEffect(() => {

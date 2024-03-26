@@ -2,35 +2,83 @@
 
 import DateReserve from "@/components/DateReseve"
 import { Dayjs } from "dayjs";
-import { useState } from "react";
 import addAppt from "@/libs/addAppt";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function CoWorkingCard({ coworking }: { coworking: Coworking }) {
     
 
 
-    const session = useSession()
+
     const router = useRouter();
-    const currentUser = session.data?.user
-    // console.log(userId)
+  
+
 
     const [datetime, setDate] = useState<Dayjs|null>(null)
     const [time, setTime] = useState<string>("")
+
+    const { data: session, status } = useSession()
+    const [data,setData] = useState<Reservation[]>()
+
+    useEffect(() => {
+
+
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/appointments`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "authorization":`Bearer ${session?.user.token}`
+            },
+        }).then((res) => res.json())
+        .then((data) => {
+          setData(data.data)
+
+        })
+      }, [])
     
     const onsubmit = () => {
+        
+        if(datetime && session && time ){
+            if(session.user.role === "user"){
+                if(!data || data.length <= 2){
+                    const year = new Date(datetime.toISOString()).getFullYear()
+                    const month = new Date(datetime.toISOString()).getMonth()
+                    const day = new Date(datetime.toISOString()).getDate()
+                    if(time.match(/^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/) && time.length === 5){
+                        const hour = parseInt(time.split(":")[0])
+                        const minute = parseInt(time.split(":")[1]) 
+                        const newDate = new Date(year,month,day,hour,minute)
+                        addAppt(newDate.toISOString(),session.user._id, coworking.id,session.user.token)
+                        router.push("/history")
+                    }
+                    else{
+                        alert("Invalid time format")
+                    }
 
-        if(datetime && currentUser && time ){
-            const year = new Date(datetime.toISOString()).getFullYear()
-            const month = new Date(datetime.toISOString()).getMonth()
-            const day = new Date(datetime.toISOString()).getDate()
-            const hour = parseInt(time.split(":")[0])
-            const minute = parseInt(time.split(":")[1]) 
-            const newDate = new Date(year,month,day,hour,minute)
-            addAppt(newDate.toISOString(),currentUser._id, coworking.id,currentUser.token)
-            router.push("/history")
+                }
+                else{
+                    alert("You have more than 3 reservations")
+                }
+            }
+            else{
+                const year = new Date(datetime.toISOString()).getFullYear()
+                const month = new Date(datetime.toISOString()).getMonth()
+                const day = new Date(datetime.toISOString()).getDate()
+                if(time.match(/^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/) && time.length === 5){
+                    const hour = parseInt(time.split(":")[0])
+                    const minute = parseInt(time.split(":")[1]) 
+                    const newDate = new Date(year,month,day,hour,minute)
+                    addAppt(newDate.toISOString(),session.user._id, coworking.id,session.user.token)
+                    router.push("/history")
+                }
+                else{
+                    alert("Invalid time format")
+                }
 
+            }
+        
         }
     }
     return (

@@ -9,8 +9,8 @@ import DeleteReservation from "@/libs/DeleteReservation";
 export default function Reservation( {reservation} : {reservation : Reservation}){
     const session = useSession()
     const currentUser = session.data?.user
-    // console.log(userId)
     const rid = reservation._id
+    
     
     const onsubmit = () => {
         if(currentUser && rid){

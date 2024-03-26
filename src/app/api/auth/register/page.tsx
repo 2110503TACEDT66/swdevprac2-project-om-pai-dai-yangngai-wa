@@ -69,7 +69,7 @@ const Page = async () => {
                     Telephone
                 </h1>
                 <input required id="telephone" name="telephone"
-                placeholder="02 000 2254" className=" text-xl text-blck font-semibold placeholder:text-xl border-2 focus:outline-none py-2 px-5 border-gray-300 h-full rounded-md" type="text" />
+                placeholder="0800000000" className=" text-xl text-blck font-semibold placeholder:text-xl border-2 focus:outline-none py-2 px-5 border-gray-300 h-full rounded-md" type="text" />
             </div>
         </div>
         <button type="submit" className=" bg-main-100 text-white  text-center py-3 rounded-md font-semibold" >
