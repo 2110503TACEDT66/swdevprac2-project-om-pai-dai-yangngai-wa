@@ -5,12 +5,14 @@ import { Dayjs } from "dayjs";
 import { useState } from "react";
 import addAppt from "@/libs/addAppt";
 import { useSession } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import getUserProfile from "@/libs/getUserProfile";
+import UpdateReservation from "@/libs/UpdateReservation";
 
-export default function CoWorkingCard({ coworking }: { coworking: Coworking }) {
+
+export default function CoWorkingEdit({ coworking}: { coworking: Coworking}) {
     
 
 
@@ -21,14 +23,17 @@ export default function CoWorkingCard({ coworking }: { coworking: Coworking }) {
     // console.log(userId)
 
     const [datetime, setDate] = useState<Dayjs|null>(null)
+
+    const urlParams = useSearchParams()
+    const aid = urlParams.get('id')
     
     const onsubmit = () => {
         // alert(datetime)
         // console.log(datetime);
         console.log("onSubmit1")
-        if(datetime && currentUser){
+        if(datetime && currentUser && aid){
             console.log("onSubmit2")
-            addAppt(datetime.toISOString(),currentUser._id, coworking.id,currentUser.token)
+            UpdateReservation(datetime.toISOString(), currentUser.token, aid)
 
         }
     }
