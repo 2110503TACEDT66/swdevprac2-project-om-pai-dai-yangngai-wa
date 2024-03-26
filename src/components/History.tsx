@@ -7,12 +7,10 @@ import { useSession } from "next-auth/react"
 
 export default function History() {
     const { data: session, status } = useSession()
-    const [data,setData] = useState<Reservation[]>()
+    const [data,setData] = useState<Reservation[]>([])
     const [isLoading, setLoading] = useState(true)
 
     useEffect(() => {
-
-
         fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/appointments`, {
             method: "GET",
             headers: {
@@ -25,7 +23,7 @@ export default function History() {
           setData(data.data)
 
         })
-      }, [])
+      },)
     return (
 
         <div className=" w-full min-h-[82vh] bg-white rounded-md">

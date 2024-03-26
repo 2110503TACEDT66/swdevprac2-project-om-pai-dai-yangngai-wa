@@ -1,7 +1,7 @@
 import Coworking from "./Coworking"
 import CircularProgress from '@mui/material/CircularProgress';
 
-export default function CoworkingCatalog({coworking, isLoading}: {coworking: any , isLoading: boolean}) {
+export default function CoworkingCatalog({coworking, isLoading}: {coworking: Coworking[] , isLoading: boolean}) {
     return (
         <>
         {

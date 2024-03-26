@@ -66,7 +66,7 @@ export default function CoworkingEdit({ coworking}: { coworking: Coworking}) {
         </div>
         <button className= "bg-main-100 text-white py-3 rounded-md font-semibold"
         onClick={onsubmit}>
-            RESERVE
+            UPDATE
         </button>
     </div>
     )

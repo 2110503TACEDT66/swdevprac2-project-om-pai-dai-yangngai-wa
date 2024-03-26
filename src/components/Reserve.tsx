@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar"
 import { useEffect,useState } from "react"
 
 export default function Reserve() {
-    const [data,setData] = useState<Coworking[]>()
+    const [data,setData] = useState<Coworking[]>([])
     const [query,setQuery] = useState("")
     const [isLoading, setLoading] = useState(true)
     const [sort,setSort] = useState("asc")

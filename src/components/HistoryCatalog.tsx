@@ -1,7 +1,7 @@
 import Reservation from './Reservation';
 import CircularProgress from '@mui/material/CircularProgress';
 
-export default function CoworkingCatalog({reservation, isLoading}: {reservation: any , isLoading: boolean}) {
+export default function CoworkingCatalog({reservation, isLoading}: {reservation: Reservation[] , isLoading: boolean}) {
     return (
         <>
         {
@@ -17,8 +17,8 @@ export default function CoworkingCatalog({reservation, isLoading}: {reservation:
                 (
                     <div className=" flex flex-col space-y-5 p-5">
                         {
-                            reservation.map((reservationIem:Reservation) => (
-                                <Reservation key={reservation.name} reservation={reservationIem} />
+                            reservation.map((reservationItem:Reservation) => (
+                                <Reservation key={reservationItem._id} reservation={reservationItem} />
                             ))
                         }
                     </div>
