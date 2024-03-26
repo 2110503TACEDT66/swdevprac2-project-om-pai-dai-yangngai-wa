@@ -21,13 +21,16 @@ interface CoworkingJson {
 
 interface User {
     name: string,
-    _id: string,
+    email : string,
+    password: string,
+    telephone_number: string,
+    role: string,
 
 }
 
 interface Reservation {
     apptDate : string,
-    user : User,
+    user : string,
     coWorking : Coworking,
     createAt : string,
     _id : string
