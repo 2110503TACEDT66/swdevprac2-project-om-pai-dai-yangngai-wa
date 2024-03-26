@@ -35,7 +35,7 @@ export default function CoworkingEdit({ coworking}: { coworking: Coworking}) {
                 router.push("/history")
             }
             else{
-                alert("Invalid time format")
+                alert("Invalid time format" )
             }
         }
     }

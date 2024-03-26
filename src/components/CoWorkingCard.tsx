@@ -60,6 +60,7 @@ export default function CoWorkingCard({ coworking }: { coworking: Coworking }) {
                 }
                 else{
                     alert("You have more than 3 reservations")
+                    router.push("/")
                 }
             }
             else{
