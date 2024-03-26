@@ -10,7 +10,7 @@ const Page = async () => {
         const pass = registerData.get('password');
         const name = registerData.get('name');
         const telephone = registerData.get('telephone');
-        const response = await fetch(`${process.env.BACKEND_URL}/auth/register`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
