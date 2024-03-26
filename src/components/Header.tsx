@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUser , faScrewdriverWrench } from "@fortawesome/free-solid-svg-icons"
 import getUserProfile from '@/libs/getUserProfile';
+import LogOutButton from './LogOutButton';
 
 export default async function Header() {
     const session = await getServerSession(authOptions)
@@ -35,7 +36,7 @@ export default async function Header() {
                                         {session.user.name}
                                     </h1>      
                                 </div>
-                                <Link href="/api/auth/signout" className=" text-xl font-bold text-white p-2 bg-main-100 rounded-md">LOGOUT</Link>
+                                <LogOutButton />
                             </div>
                         )
                 }
