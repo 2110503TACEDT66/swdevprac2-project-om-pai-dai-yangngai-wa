@@ -19,10 +19,6 @@ interface CoworkingJson {
 
 interface User {
     name: string,
-    email : string,
-    password: string,
-    telephone_number: string,
-    role: string,
     _id: string,
 
 }

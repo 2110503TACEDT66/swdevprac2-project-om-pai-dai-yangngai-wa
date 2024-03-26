@@ -21,7 +21,7 @@ export default function Reservation( {reservation} : {reservation : Reservation}
                         User : 
                     </h1>
                     <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {reservation.user}
+                        {reservation.user.name}
                     </h1>
                 </div>
                 <div className=" flex flex-row  items-center space-x-6">
