@@ -3,7 +3,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 export default function CoworkingCatalog({coworking, isLoading}: {coworking: Coworking[] , isLoading: boolean}) {
     return (
-        <>
+        <div>
         {
             isLoading ? 
             (
@@ -33,6 +33,6 @@ export default function CoworkingCatalog({coworking, isLoading}: {coworking: Cow
                 )
             )
         }
-        </>
+        </div>
     )
 }
