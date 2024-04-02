@@ -6,9 +6,9 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 
 export default function DateReserve({onChangeDate} : {onChangeDate : Function}) {
     return(
-        <div>
+        <div className=" w-full">
             <LocalizationProvider  dateAdapter={AdapterDayjs} >
-                <DatePicker  onChange={(value)=>onChangeDate(value)} className=" w-full bg-white text-xl text-blck font-semibold"/>
+                <DatePicker  onChange={(value)=>onChangeDate(value)} className=" w-full bg-white text-xl font-semibold"/>
             </LocalizationProvider>
         </div>
     )

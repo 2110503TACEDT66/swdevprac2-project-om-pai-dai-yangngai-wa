@@ -1,116 +1,51 @@
-"use client"
-
-import DateReserve from "@/components/DateReseve"
-import { Dayjs } from "dayjs";
-import addAppt from "@/libs/addAppt";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-
-export default function CoWorkingCard({ coworking }: { coworking: Coworking }) {
-    
+import Link from "next/link";
 
 
 
-    const router = useRouter();
-  
-
-
-    const [datetime, setDate] = useState<Dayjs|null>(null)
-    const [time, setTime] = useState<string>("")
-
-    const { data: session, status } = useSession()
-    const [data,setData] = useState<Reservation[]>()
-
-    useEffect(() => {
-
-
-        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/appointments`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "authorization":`Bearer ${session?.user.token}`
-            },
-        }).then((res) => res.json())
-        .then((data) => {
-          setData(data.data)
-
-        })
-      }, [])
-    
-    const onsubmit = () => {
-        
-        if(datetime && session && time ){
-            if(session.user.role === "user"){
-                if(!data || data.length <= 2){
-                    const year = new Date(datetime.toISOString()).getFullYear()
-                    const month = new Date(datetime.toISOString()).getMonth()
-                    const day = new Date(datetime.toISOString()).getDate()
-                    if(time.match(/^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/) && time.length === 5){
-                        const hour = parseInt(time.split(":")[0])
-                        const minute = parseInt(time.split(":")[1]) 
-                        const newDate = new Date(year,month,day,hour,minute)
-                        addAppt(newDate.toISOString(),session.user._id, coworking.id,session.user.token)
-                        router.push("/history")
-                    }
-                    else{
-                        alert("Invalid time format")
-                    }
-
-                }
-                else{
-                    alert("You have more than 3 reservations")
-                    router.push("/")
-                }
-            }
-            else{
-                const year = new Date(datetime.toISOString()).getFullYear()
-                const month = new Date(datetime.toISOString()).getMonth()
-                const day = new Date(datetime.toISOString()).getDate()
-                if(time.match(/^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/) && time.length === 5){
-                    const hour = parseInt(time.split(":")[0])
-                    const minute = parseInt(time.split(":")[1]) 
-                    const newDate = new Date(year,month,day,hour,minute)
-                    addAppt(newDate.toISOString(),session.user._id, coworking.id,session.user.token)
-                    router.push("/history")
-                }
-                else{
-                    alert("Invalid time format")
-                }
-
-            }
-        
-        }
-    }
-    return (
-        <div className=" w-10/12 space-y-10 h-full p-10 bg-white rounded-md flex flex-col">
-                <div className=" flex flex-col space-y-3">
+export default function CoworkingCard( {coworking} : {coworking : Coworking}){
+    return(
+        <div className=" flex flex-row justify-between bg-gray-200 rounded-md px-3 py-3">
+            <div className=" flex flex-col space-y-3">
+                <div className=" flex flex-row items-center space-x-3">
                     <h1 className=" font-bold text-xl">
-                        Name
+                        Name : 
                     </h1>
-                    <h1 className=" font-semibold text-xl border-2 p-3 rounded-md border-gray-300">
+                    <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
                         {coworking.name}
                     </h1>
                 </div>
-                <div className=" flex flex-row w-full space-x-10">
-                    <div className=" flex flex-col space-y-3 w-1/2">
-                        <h1 className=" font-bold text-xl">
-                            Date-Time
-                        </h1>
-                        <DateReserve onChangeDate={(value : Dayjs)=>setDate(value)} />
-                    </div>
-                    <div className=" flex flex-col space-y-3 w-1/2">
-                        <h1 className=" font-bold text-xl">
-                            Time
-                        </h1>
-                        <input onChange={(e )=>setTime(e.target.value)} placeholder="04:30" className=" text-xl text-blck font-semibold placeholder:text-xl border-2 focus:outline-none px-5 border-gray-300 h-full rounded-md" type="text" />
-                    </div>
-
+                <div className=" flex flex-row  items-center space-x-3">
+                    <h1 className=" font-bold text-xl">
+                        Tel : 
+                    </h1>
+                    <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
+                        {coworking.tel}
+                    </h1>
+                    <h1 className=" font-bold text-xl">
+                        Open : 
+                    </h1>
+                    <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
+                        {coworking.opentime} {}
+                    </h1>
+                    <h1 className=" font-bold text-xl">
+                        Close : 
+                    </h1>
+                    <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
+                        {coworking.closetime}
+                    </h1>
                 </div>
-                <button className= "bg-main-100 text-white py-3 rounded-md font-semibold"
-                onClick={onsubmit}>
-                    RESERVE
-                </button>
+                <div className=" flex flex-row  items-center space-x-3">
+                    <h1 className=" font-bold text-xl">
+                        Address : 
+                    </h1>
+                    <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
+                        {coworking.address} {coworking.district} {coworking.province} {coworking.postalcode}
+                    </h1>
+                </div>
             </div>
+            <Link href={`/coworkings/${coworking.id}`} className=" bg-main-100 my-5 w-2/12 text-white flex justify-center items-center font-bold rounded-md">
+                SELECT
+            </Link>
+        </div>
     )
 }

@@ -1,9 +1,9 @@
-import Reserve from "@/components/Reserve";
+import Coworking from "@/components/Coworking";
 
 export default function Page() {
     return(
         <main className=" p-7 min-h-[90vh] bg-main-100">
-            <Reserve />
-        </main>
+            <Coworking />
+        </main> 
     )
     }

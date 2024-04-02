@@ -1,4 +1,4 @@
-import Coworking from "./Coworking"
+import CoworkingCard from "./CoworkingCard"
 import CircularProgress from '@mui/material/CircularProgress';
 
 export default function CoworkingCatalog({coworking, isLoading}: {coworking: Coworking[] , isLoading: boolean}) {
@@ -18,7 +18,7 @@ export default function CoworkingCatalog({coworking, isLoading}: {coworking: Cow
                     <div className=" flex flex-col space-y-5 p-5">
                         {
                             coworking.map((coworkingItem:Coworking) => (
-                                <Coworking key={coworkingItem.name} coworking={coworkingItem} />
+                                <CoworkingCard key={coworkingItem.name} coworking={coworkingItem} />
                             ))
                         }
                     </div>

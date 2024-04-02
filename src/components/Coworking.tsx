@@ -1,51 +1,37 @@
-import Link from "next/link";
+"use client"
+
+import CoworkingCatalog from "./CoworkingCatalog"
+import SearchBar from "./SearchBar"
+import { useEffect,useState } from "react"
+
+export default function Coworking() {
+    const [data,setData] = useState<Coworking[]>([])
+    const [query,setQuery] = useState("")
+    const [isLoading, setLoading] = useState(true)
+    const [sort,setSort] = useState("asc")
+
+    useEffect(() => {
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/coworkings/?name[regex]=${query}`)
+          .then((res) => res.json())
+          .then((data) => {
+
+            setLoading(false)
+            if(sort === "asc"){
+                setData(data.data)
+            }
+            else if(sort === "desc"){
+                setData(data.data.reverse())
+            }
+            
+          })
+
+      }, [query,sort])
 
 
-
-export default function Coworking( {coworking} : {coworking : Coworking}){
-    return(
-        <div className=" flex flex-row justify-between bg-gray-200 rounded-md px-3 py-3">
-            <div className=" flex flex-col space-y-3">
-                <div className=" flex flex-row items-center space-x-3">
-                    <h1 className=" font-bold text-xl">
-                        Name : 
-                    </h1>
-                    <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {coworking.name}
-                    </h1>
-                </div>
-                <div className=" flex flex-row  items-center space-x-3">
-                    <h1 className=" font-bold text-xl">
-                        Tel : 
-                    </h1>
-                    <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {coworking.tel}
-                    </h1>
-                    <h1 className=" font-bold text-xl">
-                        Open : 
-                    </h1>
-                    <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {coworking.opentime} {}
-                    </h1>
-                    <h1 className=" font-bold text-xl">
-                        Close : 
-                    </h1>
-                    <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {coworking.closetime}
-                    </h1>
-                </div>
-                <div className=" flex flex-row  items-center space-x-3">
-                    <h1 className=" font-bold text-xl">
-                        Address : 
-                    </h1>
-                    <h1 className=" bg-white p-3 rounded-lg font-bold text-xl">
-                        {coworking.address} {coworking.district} {coworking.province} {coworking.postalcode}
-                    </h1>
-                </div>
-            </div>
-            <Link href={`/coworkings/${coworking.id}`} className=" bg-main-100 my-5 w-2/12 text-white flex justify-center items-center font-bold rounded-md">
-                SELECT
-            </Link>
+    return (
+        <div className=" w-full min-h-[82vh] bg-white rounded-md">
+            <SearchBar sort={setSort} search={setQuery} />
+            <CoworkingCatalog isLoading={isLoading} coworking={ data}/>
         </div>
     )
 }

@@ -24,7 +24,8 @@ interface User {
 }
 
 interface Reservation {
-    apptDate : string,
+    startTime : string,
+    endTime : string,
     user : User,
     coWorking : Coworking,
     createAt : string,
